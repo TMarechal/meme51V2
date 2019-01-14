@@ -1,0 +1,31 @@
+{% extends 'Layout/layout.html.twig' %}
+{% block title %}
+    {{ parent() }} - Accueil
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="d-flex justify-center w100 p20 panel">
+        <a class="logo" href="./generateur"><button type="button" class="p20 bct w250px  fs24 text-center cursor-pointer cl1">Générateur</button></a>
+    </div>
+
+    <section class="d-flex flex-column justify-start align-center w100">
+
+        <h2 class="fs24 p20 cl1 ff2">Derniers memes</h2>
+    
+        <div class="d-flex flex-row align-center justify-spacee w75  flex-wrap border">
+
+        {% if images|length > 0 %}
+            {% for image in images %}
+                <article class="w25 p20">
+                    <img class="w100" src="./assets/upload/{{ image.NAME }}" alt="">
+                </article>
+            {% endfor %}
+        {% endif %}
+
+        </div>
+
+    </section>
+
+{% endblock %}

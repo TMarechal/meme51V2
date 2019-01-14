@@ -1,0 +1,82 @@
+{% extends "Layout/layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Generator
+{% endblock %}
+
+{% block content %}
+
+
+<div class="d-flex justify-center d-flex flex-row w100 custom">
+
+    <section class="w75 d-flex justify-center align-center "> {# Bloc de gauche contenant la preview #}
+
+        <div class="w75 p20 position-r">
+            <div class="w100 d-flex justify-center">
+                <img id="preview" class=" index1 ">
+            </div>
+            <div class="position-a w75 top50 index2 cl1 m0auto left0 right0 text-center ww-break ff1 fs30 text-uppercase" id="viewtop"></div>
+            <div class="position-a w75 bot50 index2 cl1 m0auto left0 right0 text-center ww-break ff1 fs30 text-uppercase" id="viewbot"></div>  
+
+        </div>
+
+        {# <div id="Mv" class="hidden justify-center align-center">
+            <img src="./assets/img/MV.png">
+        </div>
+        <div id="Bob" class="hidden justify-center align-center">
+            <img src="./assets/img/bob-ross.jpg">
+        </div> #}
+
+    </section>
+
+
+    <section class="w25 d-flex flex-column justify-center align-center cl1 mr20 border"> {# Bloc de droite contenant les tools #}
+        {% if message != '' %} 
+            <p>{{ message }}</p>
+        {% endif %}
+
+         <form id ="generator" class=" h75 w100 d-flex flex-column justify-center justify-spacee align-center  " method="POST" action="download" enctype="multipart/form-data">
+            
+            <div class=" w100">
+                <div class="d-flex flex-row justify-center align-center cl1">
+                    <input type="hidden" name="MAX-FILE-SIZE" value="500000">
+                    <label for="meme"><div class="p10 fs20 upload cl1 logo">Upload</div></label>
+                    <input type="file" id="meme" name="meme" class="hidden">
+                </div>
+                <div class="d-flex flex-row justify-center align-center">
+                    <button class="p10 bct cursor-pointer w250p panel cl1" id="texte1" type="button">Texte </button>
+                    <button class="p10 bct cursor-pointer w250p panel cl1" id="options1" type="button">Options</button>
+                </div>
+            </div>
+
+
+            <div id="texte" class="d-flex flex-column justify-center align-center w50">
+                <label for="toptext" class="fs16">Texte du haut
+                        <input class="w100 h30p borderSN bct cl1" type="text" name="toptext" id="toptext">
+                </label>
+
+                <label for ="bottext" class="fs16 mt20">Texte du bas
+                        <input class="w100 h30p borderSN bct cl1" type="text" name="bottext" id="bottext">
+                </label>
+            </div>
+
+
+            <div id ="options" class="hidden d-flex flex-column justify-center align-center w50 ">
+                <label class="fs20">Taille de la police </label>
+                <div class="d-flex flex-column justify-center align-center mt20">
+                    <input class="w40p" type="number" id="fontSiTop" name="fontSiTop">
+                </div>
+                <label class="fs20">Taille de la police </label>
+                <div class="d-flex flex-column justify-center align-center mt20">
+                    <input class="w40p" type="number" id="fontSiBot" name="fontSiBot">
+                </div>
+            </div>
+            <div class="w25 cl1">
+                <button type="submit" name="generate" value="Generate" class="bct panel index1 cl1" ><input type="submit" name="generate" value="Generate" class="p10 index2 hidden">Generate</button>
+            </div>
+        </form> 
+
+    </section>
+
+</div>
+{% endblock %}
